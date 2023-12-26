@@ -1,0 +1,380 @@
+body {
+    /* 设置背景图片 */
+    background-image: url('./assets/img/bg.jpg');
+    /* 替换为你的图片URL */
+
+    /* 保持背景图片固定，不随内容滚动 */
+    background-attachment: fixed;
+
+    /* 确保背景图片覆盖整个视口 */
+    background-size: cover;
+
+    /* 设置背景图片始终居中 */
+    background-position: center;
+}
+
+/* Styles for the Ad Section */
+.ad-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.ad {
+    width: 45%;
+    /* Adjust the width of each ad block */
+    text-align: center;
+    /* Aligns the content to the center */
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Adds a subtle shadow to each ad block */
+    margin: 10px;
+    border-radius: 30px;
+}
+
+.ad img,
+.ad video {
+    width: 90%;
+    /* Makes the image or video fill the container */
+    height: auto;
+    /* Maintains aspect ratio */
+}
+
+.ad p {
+    margin-top: 5px;
+    /* Space between ad and description text */
+    font-size: 0.9em;
+    /* Adjusts the size of the text */
+    color: #c8161d;
+    /* Description text color */
+}
+
+@media screen and (max-width: 768px) {
+
+    /* Adjust the max-width as needed */
+    .ad-container {
+        flex-direction: column;
+        /* Stack ads vertically */
+    }
+
+    .ad {
+        width: 100%;
+        /* Each ad takes full width */
+        margin-bottom: 20px;
+        /* Adds space between the ads */
+    }
+}
+
+
+/* 给图片和视频添加圆角效果 */
+.ad img,
+.ad video {
+    border-radius: 15px;
+    /* 调整这个值以达到你想要的圆角大小 */
+}
+
+.ad-container {
+    padding: 20px;
+    /* 为了更好的视觉效果，可以增加一些内边距 */
+    border-radius: 20px;
+    /* 给整个广告容器添加圆角 */
+}
+
+/* 额外效果 2: 阴影效果 */
+.ad {
+    background: linear-gradient(to right, #6dd5fa, #ff758c);
+    /* 渐变色 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* 添加阴影效果 */
+    transition: transform 0.3s ease-in-out;
+    /* 平滑转换效果 */
+}
+
+/* 鼠标悬停时增大广告块大小 */
+.ad:hover {
+    transform: scale(1.05);
+    /* 鼠标悬停时缩放广告块 */
+}
+
+.centered-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 60px;
+    margin: 0 auto;
+    border-radius: 60px;
+    background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+    background-size: 400%;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.centered-button:hover {
+    animation: animate 8s linear infinite alternate;
+}
+
+@keyframes animate {
+    0% {background-position: 0%;}
+    50% {background-position: 100%;}
+    100% {background-position: 0%;}
+}
+
+.centered-button::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    z-index: -1;
+    background: linear-gradient(90deg, #03a9f4, #f441a5, #ffeb3b, #03a9f4, #f441a5, #ffeb3b, #03a9f4);
+    border-radius: 40px;
+    background-size: 400%;
+    filter: blur(20px);
+    opacity: 0;
+    transition: 1s;
+}
+
+.centered-button:hover::before {
+    filter: blur(20px);
+    opacity: 1;
+    animation: animate 8s linear infinite;
+}
+
+.btn-learn-more {
+    text-align: center;
+    font-size: 45px;
+    line-height: 120px;
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: sans-serif;
+    background: none;
+    border: none;
+}
+
+.centered-button a{
+    font-size: 20px;
+}
+
+#about{
+    color: #ffee6f;
+}
+
+#skills{
+    color: #ffee6f;
+}
+
+#portfolio{
+    color: #ffee6f;
+}
+
+#contact{
+    color: #ffee6f;
+}
+
+/* Specific to the login and registration container to prevent global style conflicts */
+#main {
+    display: flex; /* Add Flexbox to main */
+    justify-content: center;
+    align-items: center;
+    margin-top: 80px;
+    flex-direction: column; /* Stack children vertically */
+}
+
+#main .container {
+    background-color: #efefef;
+    width: 1050px;
+    height: 715px;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.1);
+    position: relative;
+    margin: 50px auto; /* Center the container */
+    overflow: hidden; /* Keep all content within the container */
+}
+
+#main .form-box {
+    position: absolute;
+    top: 50%;
+    left: 70%;
+    transform: translate(-50%, -50%); /* Center form box */
+    background-color: #d3b7d8;
+    width: 430px;
+    height: 580px;
+    border-radius: 5px;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+    transition: 0.5s ease-in-out;
+}
+
+#main .register-box, #main .login-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+#main .hidden {
+    display: none;
+}
+
+/* Typography & Inputs under main */
+#main h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    text-transform: uppercase;
+    color: #fff;
+    letter-spacing: 5px;
+}
+
+#main input {
+    background-color: transparent;
+    width: 70%;
+    color: #fff;
+    border: none;
+    border-bottom: 1px solid rgba(255,255,255,0.4);
+    padding: 10px 0;
+    text-indent: 10px;
+    margin: 8px 0;
+    font-size: 14px;
+    letter-spacing: 2px;
+}
+
+#main input::placeholder {
+    color: #fff;
+}
+
+#main input:focus {
+    color: #a262ad;
+    outline: none;
+    border-bottom: 1px solid #a262ad80;
+    transition: 0.5s;
+}
+
+#main input:focus::placeholder {
+    opacity: 0;
+}
+
+/* Button Styles specific to main */
+#main .form-box button, #main .con-box button {
+    width: 70%;
+    margin-top: 35px;
+    background-color: #f6f6f6;
+    outline: none;
+    border-radius: 8px;
+    padding: 13px;
+    color: #a262ad;
+    letter-spacing: 2px;
+    border: none;
+    cursor: pointer;
+}
+
+#main .form-box button:hover, #main .con-box button:hover {
+    background-color: #a262ad;
+    color: #f6f6f6;
+    transition: background-color 0.5s ease;
+}
+
+/* Content Box Styles specific to main */
+#main .con-box {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+#main .con-box.left {
+    left: 5%;
+}
+
+#main .con-box.right {
+    right: 5%;
+}
+
+#main .con-box h2, #main .con-box p, #main .con-box button {
+    color: #8e9aaf; /* Consistent color for text */
+}
+
+#main .con-box h2 {
+    font-size: 22px;
+    font-weight: bold;
+    letter-spacing: 3px;
+    text-align: center;
+    margin-bottom: 4px;
+}
+
+#main .con-box p {
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+#main .con-box span {
+    color: #d3b7d8;
+}
+
+#main .con-box img {
+    width: 150px;
+    height: 150px;
+    opacity: 0.9;
+    margin: 40px 0;
+}
+.login-box
+{
+    text-align: center;
+}
+
+.register-box
+{
+    text-align: center;
+}
+
+/* For tablets and below (adjust based on your design's break points) */
+@media (max-width: 768px) {
+    #main {
+        margin-top: 20px; /* Less margin on smaller screens */
+    }
+
+    #main .container {
+        flex-direction: column; /* Stack vertically on smaller screens */
+        width: 90%; /* Narrower width for smaller screens */
+        margin: 20px auto; /* Adjust margin */
+    }
+
+    #main .form-box, #main .con-box {
+        width: 100%; /* Full width for smaller screens */
+        margin: 10px 0; /* Stack with vertical spacing */
+    }
+
+    #main .form-box {
+        order: 2; /* Ensure form box is below content boxes on smaller screens */
+    }
+
+    #main .con-box {
+        order: 1; /* Content boxes above form box on smaller screens */
+    }
+
+    #main .con-box.left, #main .con-box.right {
+        width: 100%; /* Full width for content boxes */
+    }
+}
+
+/* For mobile phones */
+@media (max-width: 480px) {
+    #main .container {
+        padding: 10px; /* Less padding on very small screens */
+    }
+    
+    #main h1, #main .con-box h2 {
+        font-size: 18px; /* Smaller font size for very small screens */
+    }
+}
