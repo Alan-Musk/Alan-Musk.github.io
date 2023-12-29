@@ -1,19 +1,10 @@
 body {
-    /* 设置背景图片 */
     background-image: url('./assets/img/bg.jpg');
-    /* 替换为你的图片URL */
-
-    /* 保持背景图片固定，不随内容滚动 */
     background-attachment: fixed;
-
-    /* 确保背景图片覆盖整个视口 */
     background-size: cover;
-
-    /* 设置背景图片始终居中 */
     background-position: center;
 }
 
-/* Styles for the Ad Section */
 .ad-container {
     display: flex;
     justify-content: space-around;
@@ -22,12 +13,9 @@ body {
 
 .ad {
     width: 45%;
-    /* Adjust the width of each ad block */
     text-align: center;
-    /* Aligns the content to the center */
     padding: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    /* Adds a subtle shadow to each ad block */
     margin: 10px;
     border-radius: 30px;
 }
@@ -35,42 +23,29 @@ body {
 .ad img,
 .ad video {
     width: 90%;
-    /* Makes the image or video fill the container */
     height: auto;
-    /* Maintains aspect ratio */
 }
 
 .ad p {
     margin-top: 5px;
-    /* Space between ad and description text */
     font-size: 0.9em;
-    /* Adjusts the size of the text */
     color: #c8161d;
-    /* Description text color */
 }
 
-@media screen and (max-width: 768px) {
-
-    /* Adjust the max-width as needed */
+@media screen and (max-width:768px) {
     .ad-container {
         flex-direction: column;
-        /* Stack ads vertically */
     }
 
     .ad {
         width: 100%;
-        /* Each ad takes full width */
         margin-bottom: 20px;
-        /* Adds space between the ads */
     }
 }
 
-
-/* 给图片和视频添加圆角效果 */
 .ad img,
 .ad video {
     border-radius: 15px;
-    /* 调整这个值以达到你想要的圆角大小 */
 }
 
 .ad-container {
@@ -373,6 +348,7 @@ body {
         margin: 20px auto;
         /* Adjust margin */
     }
+
     #main .form-box,
     #main .con-box {
         width: 100%;
@@ -380,10 +356,12 @@ body {
         margin: 10px 0;
         /* Stack with vertical spacing */
     }
+
     .con-box h2,
     p {
         display: none;
     }
+
     #main .form-box {
         height: 400px;
         width: 90%;
@@ -391,10 +369,12 @@ body {
         order: 2;
         /* Ensure form box is below content boxes on smaller screens */
     }
+
     #main .con-box {
         order: 1;
         /* Content boxes above form box on smaller screens */
     }
+
     #main .con-box.left,
     #main .con-box.right {
         width: 100%;
@@ -471,26 +451,29 @@ body {
     #navbar {
         margin-right: 20px;
     }
+
     #title_words {
-        display:block;
+        display: block;
         font-size: 18px;
         margin-top: 20px;
         margin-bottom: 10px;
         text-align: center;
         color: #8E9AAF;
     }
+
     #title_words span {
         color: #D3B7D8;
     }
 
     #foot_words {
-        display:block;
+        display: block;
         font-size: 14px;
         margin-top: 440px;
         margin-bottom: 10px;
         text-align: center;
         color: #8E9AAF;
     }
+
     #foot_words span {
         color: #D3B7D8;
     }
@@ -501,9 +484,11 @@ body {
 .title_words {
     display: none;
 }
+
 .foot_words {
     display: none;
 }
-.foot2{
+
+.foot2 {
     display: none;
 }
