@@ -116,9 +116,18 @@ body {
 }
 
 @keyframes animate {
-    0% {background-position: 0%;}
-    50% {background-position: 100%;}
-    100% {background-position: 0%;}
+
+    0% {
+        background-position: 0%;
+    }
+
+    50% {
+        background-position: 100%;
+    }
+
+    100% {
+        background-position: 0%;
+    }
 }
 
 .centered-button::before {
@@ -155,33 +164,35 @@ body {
     border: none;
 }
 
-.centered-button a{
+.centered-button a {
     font-size: 20px;
 }
 
-#about{
+#about {
     color: #ffee6f;
 }
 
-#skills{
+#skills {
     color: #ffee6f;
 }
 
-#portfolio{
+#portfolio {
     color: #ffee6f;
 }
 
-#contact{
+#contact {
     color: #ffee6f;
 }
 
 /* Specific to the login and registration container to prevent global style conflicts */
 #main {
-    display: flex; /* Add Flexbox to main */
+    display: flex;
+    /* Add Flexbox to main */
     justify-content: center;
     align-items: center;
     margin-top: 80px;
-    flex-direction: column; /* Stack children vertically */
+    flex-direction: column;
+    /* Stack children vertically */
 }
 
 #main .container {
@@ -189,22 +200,25 @@ body {
     width: 1050px;
     height: 715px;
     border-radius: 5px;
-    box-shadow: 5px 5px 5px rgba(0,0,0,0.1);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
     position: relative;
-    margin: 50px auto; /* Center the container */
-    overflow: hidden; /* Keep all content within the container */
+    margin: 50px auto;
+    /* Center the container */
+    overflow: hidden;
+    /* Keep all content within the container */
 }
 
 #main .form-box {
     position: absolute;
     top: 50%;
     left: 70%;
-    transform: translate(-50%, -50%); /* Center form box */
+    transform: translate(-50%, -50%);
+    /* Center form box */
     background-color: #d3b7d8;
     width: 430px;
     height: 580px;
     border-radius: 5px;
-    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -212,7 +226,8 @@ body {
     transition: 0.5s ease-in-out;
 }
 
-#main .register-box, #main .login-box {
+#main .register-box,
+#main .login-box {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -237,7 +252,7 @@ body {
     width: 70%;
     color: #fff;
     border: none;
-    border-bottom: 1px solid rgba(255,255,255,0.4);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
     padding: 10px 0;
     text-indent: 10px;
     margin: 8px 0;
@@ -261,7 +276,8 @@ body {
 }
 
 /* Button Styles specific to main */
-#main .form-box button, #main .con-box button {
+#main .form-box button,
+#main .con-box button {
     width: 70%;
     margin-top: 35px;
     background-color: #f6f6f6;
@@ -274,7 +290,8 @@ body {
     cursor: pointer;
 }
 
-#main .form-box button:hover, #main .con-box button:hover {
+#main .form-box button:hover,
+#main .con-box button:hover {
     background-color: #a262ad;
     color: #f6f6f6;
     transition: background-color 0.5s ease;
@@ -300,8 +317,11 @@ body {
     right: 5%;
 }
 
-#main .con-box h2, #main .con-box p, #main .con-box button {
-    color: #8e9aaf; /* Consistent color for text */
+#main .con-box h2,
+#main .con-box p,
+#main .con-box button {
+    color: #8e9aaf;
+    /* Consistent color for text */
 }
 
 #main .con-box h2 {
@@ -328,53 +348,162 @@ body {
     opacity: 0.9;
     margin: 40px 0;
 }
-.login-box
-{
+
+.login-box {
     text-align: center;
 }
 
-.register-box
-{
+.register-box {
     text-align: center;
-}
-
-/* For tablets and below (adjust based on your design's break points) */
-@media (max-width: 768px) {
-    #main {
-        margin-top: 20px; /* Less margin on smaller screens */
-    }
-
-    #main .container {
-        flex-direction: column; /* Stack vertically on smaller screens */
-        width: 90%; /* Narrower width for smaller screens */
-        margin: 20px auto; /* Adjust margin */
-    }
-
-    #main .form-box, #main .con-box {
-        width: 100%; /* Full width for smaller screens */
-        margin: 10px 0; /* Stack with vertical spacing */
-    }
-
-    #main .form-box {
-        order: 2; /* Ensure form box is below content boxes on smaller screens */
-    }
-
-    #main .con-box {
-        order: 1; /* Content boxes above form box on smaller screens */
-    }
-
-    #main .con-box.left, #main .con-box.right {
-        width: 100%; /* Full width for content boxes */
-    }
 }
 
 /* For mobile phones */
-@media (max-width: 480px) {
+@media only screen and (max-width: 600px) {
+
+    #main {
+        margin-top: 50px;
+        /* Less margin on smaller screens */
+    }
+
     #main .container {
-        padding: 10px; /* Less padding on very small screens */
+        flex-direction: column;
+        /* Stack vertically on smaller screens */
+        width: 90%;
+        /* Narrower width for smaller screens */
+        margin: 20px auto;
+        /* Adjust margin */
     }
-    
-    #main h1, #main .con-box h2 {
-        font-size: 18px; /* Smaller font size for very small screens */
+    #main .form-box,
+    #main .con-box {
+        width: 100%;
+        /* Full width for smaller screens */
+        margin: 10px 0;
+        /* Stack with vertical spacing */
     }
+    .con-box h2,
+    p {
+        display: none;
+    }
+    #main .form-box {
+        height: 400px;
+        width: 90%;
+        left: 50%;
+        order: 2;
+        /* Ensure form box is below content boxes on smaller screens */
+    }
+    #main .con-box {
+        order: 1;
+        /* Content boxes above form box on smaller screens */
+    }
+    #main .con-box.left,
+    #main .con-box.right {
+        width: 100%;
+        /* Full width for content boxes */
+    }
+
+    #main .container {
+        padding: 10px;
+        /* Less padding on very small screens */
+        height: 600px;
+    }
+
+    #main h1,
+    #main .con-box h2 {
+        font-size: 18px;
+        /* Smaller font size for very small screens */
+    }
+
+    .container {
+        width: 100%;
+        padding: 0;
+
+    }
+
+    .form-box,
+    .con-box {
+        width: 100%;
+        margin: 0;
+        text-align: center;
+    }
+
+    .register-box,
+    .login-box {
+        width: 100%;
+    }
+
+    .con-box.left,
+    .con-box.right {
+        display: block;
+        /* Stack them on top of each other */
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    h1,
+    h2 {
+        font-size: 1.5em;
+        /* Adjust font size */
+    }
+
+    input[type="text"],
+    input[type="password"] {
+        width: 90%;
+        /* Adjust input width */
+        margin: 10px 0;
+        /* Spacing */
+    }
+
+    button {
+        width: 90%;
+        /* Adjust button width */
+    }
+
+    img {
+        max-width: 100%;
+        /* Ensure images are not bigger than the screen */
+        height: auto;
+    }
+
+    #footer {
+        text-align: center;
+    }
+
+    #navbar {
+        margin-right: 20px;
+    }
+    #title_words {
+        display:block;
+        font-size: 18px;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        text-align: center;
+        color: #8E9AAF;
+    }
+    #title_words span {
+        color: #D3B7D8;
+    }
+
+    #foot_words {
+        display:block;
+        font-size: 14px;
+        margin-top: 440px;
+        margin-bottom: 10px;
+        text-align: center;
+        color: #8E9AAF;
+    }
+    #foot_words span {
+        color: #D3B7D8;
+    }
+
+
+}
+
+.title_words {
+    display: none;
+}
+.foot_words {
+    display: none;
+}
+.foot2{
+    display: none;
 }
