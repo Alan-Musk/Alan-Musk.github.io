@@ -71,7 +71,8 @@
                     <source src="./assets/videos/Video.webm" type="video/webm">
                     Your browser does not support HTML5 video.
                 </video>
-                <p><a href="https://github.com/Alan-Musk" style="color: #C9171C;">AlanMusk's Github homepage</a></p> <!-- Description text for Video Ad -->
+                <p><a href="https://github.com/Alan-Musk" style="color: #C9171C;">AlanMusk's Github homepage</a></p>
+                <!-- Description text for Video Ad -->
             </div>
         </section>
     </main>
@@ -165,7 +166,29 @@
 
     <!-- Template Main JS File -->
     <script src="assets/js/main.js"></script>
-
+    <script>
+        // Existing jQuery code for image animations
+        $(document).ready(function () {
+            $('.image-ad img').on('mouseenter', function () {
+                $(this).animate({
+                    opacity: 0.5
+                }, 500, function () { // Half-transparent
+                    // Scale up animation
+                    $(this).animate({
+                        width: '+=10px',
+                        height: '+=10px'
+                    }, 500, function () {
+                        // Scale down animation
+                        $(this).animate({
+                            width: '-=10px',
+                            height: '-=10px',
+                            opacity: 1 // Back to fully visible
+                        }, 500);
+                    });
+                });
+            });
+        });
+    </script>
 </body>
 
 </html>

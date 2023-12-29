@@ -1,14 +1,12 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Function to check if the phone number is valid
-    function isValidPhoneNumber(phoneNumber) {
-        return /^\d{1,10}$/.test(phoneNumber);
-    }
-    
+
+
 
     // Common validation function
     function validateForm(form) {
         let phoneNumber = form.querySelector('input[name="PhoneNumber"]').value.trim();
         let password = form.querySelector('input[name="Password"]').value.trim();
+        console.log(phoneNumber,password);
 
         // Check if fields are empty
         if (!phoneNumber || !password) {
@@ -25,6 +23,14 @@ document.addEventListener('DOMContentLoaded', function () {
         return true; // Valid
     }
 
+    // Function to check if the phone number is valid
+    function isValidPhoneNumber(phoneNumber) {
+        console.log(/^\d{1,10}$/.test(phoneNumber));
+        return /^\d{1,10}$/.test(phoneNumber);
+
+    }
+
+
     // Validate Registration Form
     document.getElementById('registrationForm').addEventListener('submit', function (event) {
         if (!validateForm(this)) {
@@ -40,24 +46,4 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 });
 
-// Existing jQuery code for image animations
-$(document).ready(function(){
-    $('.image-ad img').on('mouseenter', function(){
-        $(this).animate({
-            opacity: 0.5
-        }, 500, function() { // Half-transparent
-            // Scale up animation
-            $(this).animate({ 
-                width: '+=10px', 
-                height: '+=10px'
-            }, 500, function() { 
-                // Scale down animation
-                $(this).animate({ 
-                    width: '-=10px', 
-                    height: '-=10px',
-                    opacity: 1 // Back to fully visible
-                }, 500);
-            });
-        });
-    });
-});
+
