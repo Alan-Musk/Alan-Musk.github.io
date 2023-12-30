@@ -4,10 +4,10 @@ $phoneNumber = $_POST['PhoneNumber'] ?? '';
 $password = $_POST['Password'] ?? '';  // Ideally, this should be hashed
 
 // Connection parameters
-$host = 'localhost';  // or your database host
-$dbUser = 'username'; // your database username
-$dbPassword = 'password'; // your database password
-$dbName = 'database'; // your database name
+$host = 'localhost';  
+$dbUser = 'mysql'; //database username
+$dbPassword = 'Fanzf12345'; // database password
+$dbName = 'zhang_s1546489_fan'; // database name
 
 // Create connection
 $con_maria = @mysqli_connect($host, $dbUser, $dbPassword, $dbName);
@@ -55,3 +55,4 @@ if (mysqli_num_rows($result) > 0) {
 // Close connection
 mysqli_close($con_maria);
 ?>
+
