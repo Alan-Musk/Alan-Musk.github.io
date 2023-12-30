@@ -1,58 +1,66 @@
 <?php
-// Assuming you've got the user's PhoneNumber and Password via POST method from your form
-$phoneNumber = $_POST['PhoneNumber'] ?? '';
-$password = $_POST['Password'] ?? '';  // Ideally, this should be hashed
-
 // Connection parameters
 $host = 'localhost';  
 $dbUser = 'mysql'; //database username
 $dbPassword = 'Fanzf12345'; // database password
 $dbName = 'zhang_s1546489_fan'; // database name
 
-// Create connection
-$con_maria = @mysqli_connect($host, $dbUser, $dbPassword, $dbName);
+// Create connection using object-oriented style
+$con_maria = new mysqli($host, $dbUser, $dbPassword, $dbName);
 
 // Check connection
-if (!$con_maria) {
-    die("Connection failed: " . mysqli_connect_error());
+if ($con_maria->connect_error) {
+    die("Connection failed: " . $con_maria->connect_error);
 }
 
-// Escape user inputs for security
-$phoneNumber = mysqli_real_escape_string($con_maria, $phoneNumber);
-$password = mysqli_real_escape_string($con_maria, $password);  // Remember to hash the password
+// Check if method is POST for form submission
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $phoneNumber = $_POST['PhoneNumber'] ?? '';
+    $password = $_POST['Password'] ?? '';  
 
-// Your query to check the member's credentials
-// IMPORTANT: This is a simplistic approach; in a real application, you should use prepared statements to prevent SQL injection
-$query = "SELECT member_id, password FROM member WHERE phone_number = '$phoneNumber' AND password = '$password'";  // Replace 'password' with the hashed password column if applicable
+    // Prepared statement to prevent SQL Injection
+    $stmt = $con_maria->prepare("SELECT member_id, password FROM member WHERE phone_number = ? LIMIT 1");
+    $stmt->bind_param("s", $phoneNumber); // 's' specifies the variable type => 'string'
 
-$result = mysqli_query($con_maria, $query);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    
+    if ($result->num_rows > 0) {
+        $row = $result->fetch_assoc();
 
-// Check if login is successful
-if (mysqli_num_rows($result) > 0) {
-    // Get the member_id from the result
-    $row = mysqli_fetch_assoc($result);
-    $member_id = $row['member_id'];
+        // Verify password
+        if (password_verify($password, $row['password'])) {
+            $member_id = $row['member_id'];
+            
+            // Query to get all payments for the member
+            $paymentQuery = "SELECT description, date FROM payment WHERE member_id = ?";
+            $paymentStmt = $con_maria->prepare($paymentQuery);
+            $paymentStmt->bind_param("i", $member_id);
+            $paymentStmt->execute();
+            $paymentResult = $paymentStmt->get_result();
 
-    // Query to get all payments for the member
-    $paymentQuery = "SELECT description, date FROM payment WHERE member_id = $member_id";
-    $paymentResult = mysqli_query($con_maria, $paymentQuery);
-
-    // Display all payments
-    if (mysqli_num_rows($paymentResult) > 0) {
-        while($paymentRow = mysqli_fetch_assoc($paymentResult)) {
-            echo "Description: " . $paymentRow['description'] . " - Date: " . $paymentRow['date'] . "<br>";
+            // Display all payments
+            if ($paymentResult->num_rows > 0) {
+                while($paymentRow = $paymentResult->fetch_assoc()) {
+                    echo "Description: " . $paymentRow['description'] . " - Date: " . $paymentRow['date'] . "<br>";
+                }
+            } else {
+                echo "No payments found for the member.";
+            }
+        } else {
+            echo "Login unsuccessful. Please check your credentials.";
         }
     } else {
-        echo "No payments found for the member.";
+        echo "Login unsuccessful. Please check your credentials.";
     }
+    $stmt->close();
 } else {
-    echo "Login unsuccessful. Please check your credentials.";
-
-    // Provide a button to go back to the login form
-    echo '<button onclick="history.go(-1);">Go Back To Login</button>';
+    echo "Invalid request method.";
 }
 
-// Close connection
-mysqli_close($con_maria);
-?>
+// Provide a button to go back to the login form
+echo '<button onclick="history.go(-1);">Go Back To Login</button>';
 
+// Close connection
+$con_maria->close();
+?>
