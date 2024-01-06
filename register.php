@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['PhoneNumber']) && isset($_POST['Password']) && isset($_POST['confirm_Password'])) {
         $phone = $_POST['PhoneNumber'];
         $password = $_POST['Password'];
-        $confirm =& $_POST['confirm_Password'];
+        $confirm = $_POST['confirm_Password'];
 
         if ($confirm != $password) {
             $_SESSION['message']['error'] = 'Two passwords do not match';
