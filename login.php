@@ -1,40 +1,34 @@
 <?php
 session_start();
-include('db_connect.php');
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $phone_number = $_POST['PhoneNumber']; // Make sure this variable name matches throughout
+    $Password = $_POST['Password'];
+    // Prepare SQL with placeholders
+    $conn = new mysqli('127.0.0.1', 'root', '', 'zhang_s1546489_fan');
+    $conn->set_charset('UTF8');
 
-if (isset($_POST['login'])) {
-    $phone_number = $_POST['phone_number'];
-    $password = hash('sha256', $_POST['PASSWORD']); // Assuming SHA256 as per your insertion
+    $sql = 'select * from `member` where phone_number = ? and PASSWORD= ? ';
+    $statement = $conn->prepare($sql);
 
-    // Authenticate the user first
-    $sql = "SELECT * FROM member WHERE phone_number = '$phone_number' AND PASSWORD = '$password';";
-    $result = $conn->query($sql);
+    $statement->bind_param('ss', $phone_number, $Password);
+    $statement->execute();
+    $result = $statement->get_result();
+
 
     if ($result->num_rows > 0) {
-        // Fetching the member_id from the result to use it for payment details
+
         $user = $result->fetch_assoc();
         $_SESSION['login_user'] = $phone_number; // Set the session
         $_SESSION['member_id'] = $user['member_id']; // Set the member_id in the session
 
-        // Redirect to orders page where the payments will be displayed
+        // Redirect to orders.php to display the payment details
         header("location: orders.php");
-        exit(); // Make sure to terminate the script after a redirect
+        exit; // Important to prevent further script execution after a redirect
     } else {
-        echo "Your Login Name or Password is invalid";
+        $_SESSION['message']['error'] = "Your Login Name or Password is invalid";
+        // Redirect back to the login page or display the error
+        header("location: dd.html"); // Assuming 'index.html' is your login page
+        exit;
     }
 }
 ?>
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Member Payments</title>
-</head>
-<body>
-
-    <!-- The payments data will be displayed in orders.php, so we redirect there upon successful login -->
-
-</body>
-</html>
